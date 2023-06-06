@@ -1,58 +1,49 @@
-// Ajouter un écouteur d'événement sur le chargement du DOM
-window.addEventListener("DOMContentLoaded", function (event) {
-  // Sélectionner le formulaire de connexion
-  const loginForm = document.getElementById("login-form");
+// Étape 2 : Coder la page de connexion + Authentification de l’utilisateur
 
-  // Sélectionner le message d'erreur
-  const errorMessage = document.getElementById("error-message");
+// Sélectionner l'élément du formulaire de connexion
+const loginForm = document.querySelector('.login-form');
 
-  // Vérifier que le formulaire existe dans le DOM
-  if (loginForm) {
-    // Ajouter un écouteur d'événement sur la soumission du formulaire
-    loginForm.addEventListener("submit", function (event) {
-      // Empêcher le comportement par défaut du formulaire (rechargement de la page)
-      event.preventDefault();
+// Ajouter un écouteur d'événements pour l'événement de soumission du formulaire
+loginForm.addEventListener('submit', function(event) {
+  // Empêcher la soumission par défaut du formulaire
+  event.preventDefault();
 
-      // Récupérer les valeurs des champs email et mot de passe
-      const email = document.getElementById("email-input").value;
-      const password = document.getElementById("password-input").value;
+  // Sélectionner les éléments d'entrée d'email et de mot de passe
+  const emailInput = loginForm.querySelector('#email-input');
+  const passwordInput = loginForm.querySelector('#password-input');
 
-      // Créer un objet contenant les données à envoyer au serveur
-      const data = {
-        email: email,
-        password: password
-      };
+  // Récupérer les valeurs d'email et de mot de passe
+  const emailValue = emailInput.value.trim();
+  const passwordValue = passwordInput.value.trim();
 
-      // Créer une requête HTTP de type POST pour envoyer les données au serveur en utilisant la fonction fetch()
-      fetch("http://localhost:5678/api/users/login", { // Correction de l'URL du serveur
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-        .then(response => {
-          if (response.ok) {
-            // Extraire le JSON de la réponse
-            response.json().then(data => {
-              // Récupérer le token d'authentification renvoyé par le serveur
-              const token = data.token;
-              // Stocker le token dans le stockage local du navigateur
-              localStorage.setItem("token", token);
-
-              // Rediriger vers la page d'accueil
-              window.location.href = "index.html"; // Correction de l'URL de la page d'accueil
-            })
-          } else {
-            console.log(response);
-            errorMessage.textContent = "Erreur dans l’identifiant ou le mot de passe";
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          // Afficher un message d'erreur si la requête a échoué
-          errorMessage.textContent = "Echec de l'authentification";
-        });
-    }); 
-  }
+  // Envoyer une requête POST à l'API pour se connecter
+  fetch('http://localhost:5678/api/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email: emailValue, password: passwordValue })
+  })
+  .then(response => {
+    if (response.ok) {
+      // Si la réponse est OK, renvoyer les données au format JSON
+      return response.json();
+    } else { 
+      // Sinon, afficher un message d'erreur et lancer une erreur
+      const errorMessage = document.getElementById("error-message");
+      errorMessage.style.display = "block";
+      throw new Error('Login failed');
+    }
+  })
+  .then(data => {
+    // Sauvegarder le jeton d'authentification dans le stockage local
+    localStorage.setItem('authToken', data.token);
+    localStorage.setItem('isLoggedIn', true);
+    // Rediriger vers index.html
+    window.location.href = 'index.html';
+  })
+  .catch(error => {
+    // Afficher l'erreur dans la console en cas d'erreur
+    console.log('Error:', error);
+  });
 });

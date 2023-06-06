@@ -3,58 +3,73 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<title>Log In</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/loginstyle.css">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
-
+	<!-- En-tête de la page -->
 	<header>
-		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<!-- Titre de la page -->
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<!-- Menu de navigation -->
 		<nav>
 			<ul>
-				<li><a href="./index.html">projets</a></li>
-				<li><a href="./index.html#contact">contact</a></li>
-				<li>login</li>
+				<li>projets</li>
+				<li>contact</li>
+				<li class="login-style" id="login-link">login</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 
+	<!-- Contenu principal de la page -->
 	<main>
-		<!-- Ajout de l'attribut action et method -->
-		<form class="login-form" id="login-form" method="POST">
+		<!-- Formulaire de connexion -->
+		<form class="login-form" id="login-form">
+			<!-- Titre du formulaire -->
 			<h2 class="form-title">Log In</h2>
+
+			<!-- Champ d'entrée pour l'email -->
 			<div class="form-group">
 				<label class="form-label" for="email-input">E-mail</label>
 				<input id="email-input" class="form-input" type="email" name="email" required>
 			</div>
+
+			<!-- Champ d'entrée pour le mot de passe -->
 			<div class="form-group">
 				<label class="form-label" for="password-input">Mot de passe</label>
 				<input id="password-input" class="form-input" type="password" name="password" required>
 			</div>
-			<!-- Changement du type du bouton en button -->
+
+			<!-- Bouton de soumission du formulaire -->
 			<button type="submit" class="form-button">Se connecter</button>
+
+			<!-- Lien pour réinitialiser le mot de passe -->
 			<a href="#" class="form-link">Mot de passe oublié</a>
+
+			<!-- Message d'erreur en cas d'échec de la connexion -->
 			<p id="error-message" class="form-error">Erreur dans l’identifiant ou le mot de passe</p>
 		</form>
 	</main>
 
+	<!-- Pied de page -->
 	<footer>
+		<!-- Menu de navigation du pied de page -->
 		<nav>
 			<ul>
 				<li>Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>
-	<!-- Inclusion du fichier javascript une seule fois -->
+
+	<!-- Script JavaScript pour gérer la connexion -->
 	<script src="login.js"></script>
 </body>
 

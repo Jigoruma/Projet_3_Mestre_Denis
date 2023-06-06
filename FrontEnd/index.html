@@ -11,30 +11,46 @@
 		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/43c9024195.js" crossorigin="anonymous"></script>
 </head>
 
-<body id="body">
-	<aside id="edit" class="noedit">
-		<p><i class="fa-solid fa-pen-to-square"></i>Mode édition</p>
-		<button>publier les changements</button>
-	</aside>
+<body>
+	<!-- En-tête de la page -->
 	<header>
-		<div id="navbar">
-		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<!-- Barre supérieure -->
+		<div id="top-bar">
+			<!-- Bouton pour activer le mode édition -->
+			<div class="edition-mode">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<p>Mode édition</p>
+			</div>
+			<!-- Bouton pour publier les changements -->
+			<div class="publish-button">
+				<input type="submit" value="Publier les changements" class="publish" id="publish-button">
+			</div>
+		</div>
+		<!-- Titre de la page -->
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<!-- Menu de navigation -->
 		<nav>
 			<ul>
 				<li><a href="./index.html">projets</a></li>
-				<li class="contact"><a href="./index.html#contact">contact</li>
-				<li class="login-nav"><a href="./login.html">login</a></li>
+				<li class="contact"><a href="#contact">contact</a></li>
+				<li class="login-nav"><a href="login.html">login</a></li>
 				<li class="logout">logout</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
+
+	<!-- Contenu principal de la page -->
 	<main>
+		<!-- Section d'introduction -->
 		<section id="introduction">
+			<!-- Image de présentation -->
 			<figure class="figure-display">
 				<img src="./assets/images/sophie-bluel.png" alt="">
+				<!-- Bouton pour modifier l'image -->
 				<div class="modification-display-image">
 					<a href="#" class="modal">
 						<i class="fa-solid fa-pen-to-square"></i>
@@ -42,6 +58,7 @@
 					</a>
 				</div>
 			</figure>
+			<!-- Texte de présentation -->
 			<article>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
@@ -53,95 +70,169 @@
 					décorateur(trice)</p>
 			</article>
 		</section>
+
+		<!-- Section du portfolio -->
 		<section id="portfolio">
-			<div class="container">
+			<!-- Titre de la section -->
+			<div class="project-display">
 				<h2>Mes Projets</h2>
-				<a href="#modal" id="editWorks" class="noedit allmodal"><i class="fa-solid fa-pen-to-square"></i>
-					modifier</a>
-				<aside id="modal" class="modal noedit" aria-hidden="true" role="dialog" aria-modal="false"
-					aria-labelledby="titlemodal">
-					<div class="modal-wrapper">
-						<button id="back" class="noedit"><img src="./assets/icons/Arrow_Back.svg" alt=""></button>
-						<button id="close">X</button>
-						<div class="gallery-wrapper">
-							<h3 id="titlemodal">Galerie Photo</h3>
-
-							<div id="galleryEdit" class="noedit">
-							</div>
-							<div id="addElements" class="noedit">
-								<form id="form">
-									<div id="searchPicture">
-										<div id="inputPhoto" class="flex">
-											<i class="fa-sharp fa-regular fa-5x fa-image"></i>
-											<label for="photo" id="labelPhoto">
-												<p>+ Ajouter photo</p>
-												<input type="file" id="photo" accept="image/jpg, image/png"
-													size="4000000">
-											</label>
-											<p>jpg, png : 4mo max</p>
-										</div>
-
-										<img src="#" alt="" id="photoFile" class="noedit">
-									</div>
-									<label for="title" id="titleLabel">Titre</label>
-									<input type="text" id="title" class="borderInput">
-									<label for="category" id="categoryLab															el">Catégorie</label>
-									<div id="select-container">
-										<select name="category" id="category" class="borderInput">
-											<option value="0"></option>
-											<option value="1">Objets</option>
-											<option value="2">Appartements</option>
-											<option value="3">Hotels & restaurants</option>
-										</select>
-										<img id="dropdown" src="./assets/icons/dropdown.png" alt="">
-									</div>
-
-									<div id="dividerform"></div>
-									<button id="validate">Valider</button>
-								</form>
-							</div>
-							<div id="divider"></div>
-							<div class="container">
-								<button id="addWork">Ajouter une photo</button>
-								<button id="deleteGallery">Supprimer la galerie</button>
-							</div>
+				<!-- Bouton pour modifier les projets -->
+				<div class="modification-display-project">
+					<a href="#modal1" class="modal">
+						<div class="modal-trigger">
+							<i class="fa-solid fa-pen-to-square"></i>
+							<p class="modify">modifier</p>
 						</div>
-				</aside>
+					</a>
+				</div>
 			</div>
-			<div class="filters">
-				<button class="btn-filter">Tous</button>
-				<button class="btn-filter">Objets</button>
-				<button class="btn-filter">Appartements</button>
-				<button class="btn-filter">Hôtels & restaurants</button>
-			</div>
-			</div>
+
+			<!-- Galerie d'images des projets -->
 			<div class="gallery">
 			</div>
 		</section>
+
+		<!-- Section de contact -->
 		<section id="contact">
+			<!-- Titre de la section -->
 			<h2>Contact</h2>
+
+			<!-- Texte d'introduction -->
 			<p>Vous avez un projet ? Discutons-en !</p>
+
+			<!-- Formulaire de contact -->
 			<form action="#" method="post">
+				<!-- Champ d'entrée pour le nom -->
 				<label for="name">Nom</label>
 				<input type="text" name="name" id="name">
+
+				<!-- Champ d'entrée pour l'email -->
 				<label for="email">Email</label>
 				<input type="email" name="email" id="email">
+
+				<!-- Champ d'entrée pour le message -->
 				<label for="message">Message</label>
 				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+				<!-- Bouton de soumission du formulaire -->
 				<input type="submit" value="Envoyer">
 			</form>
 		</section>
 	</main>
 
+	<!-- Pied de page -->
 	<footer>
+		<!-- Menu de navigation du pied de page -->
 		<nav>
 			<ul>
 				<li>Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>
-	<script src="work.js" type="text/javascript"></script>
+
+	<!-- Fenêtre modale pour la galerie photo -->
+	<aside id="modal1" class="modal-display" aria-hidden="true" role="modal" aria-labelledby="titlemodal"
+		style="display: none">
+		<!-- Conteneur de la fenêtre modale -->
+		<div class="modal-wrapper">
+			<!-- Bouton pour fermer la fenêtre modale -->
+			<button class="modal-close" data-target="#modal1"><i class="fa-solid fa-x cross-icon"></i></button>
+
+			<!-- Première partie de la fenêtre modale -->
+			<div id="first-elements">
+				<!-- Titre de la fenêtre modale -->
+				<h2 id="titlemodal" class="modal-name">Galerie photo</h2>
+
+				<!-- Conteneur des images de la galerie -->
+				<div class="modal-images" id="modal-works-container">
+					<!-- Ligne d'images -->
+					<div class="image-row">
+						<!-- Conteneur d'une image -->
+						<div class="image-container">
+							<!-- Bouton pour éditer l'image -->
+							<span class="edit-button">éditer</span>
+						</div>
+						<!-- Conteneur d'une autre image -->
+						<div class="image-container">
+							<!-- Bouton pour éditer l'image -->
+							<span class="edit-button">éditer</span>
+						</div>
+					</div>
+					<!-- Autre ligne d'images -->
+					<div class="image-row">
+						<!-- Conteneur d'une image -->
+						<div class="image-container">
+							<!-- Bouton pour éditer l'image -->
+							<span class="edit-button">éditer</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Conteneur des boutons pour modifier la galerie -->
+				<div class="modal-changes-container">
+					<!-- Bouton pour ajouter une photo à la galerie -->
+					<div>
+						<input type="submit" value="Ajouter une photo" id="add-photo">
+					</div>
+					<!-- Bouton pour supprimer la galerie -->
+					<p class="suppress">Supprimer la galerie</p>
+				</div>
+			</div>
+
+			<!-- Deuxième partie de la fenêtre modale (pour ajouter une photo) -->
+			<div id="new-elements">
+				<!-- Bouton pour revenir à la première partie de la fenêtre modale -->
+				<i class="fa-solid fa-arrow-left close-icon"></i>
+
+				<!-- Contenu de la deuxième partie de la fenêtre modale -->
+				<div class="new-elements-display">
+					<!-- Titre de la deuxième partie de la fenêtre modale -->
+					<h2 id="titlemodal" class="modal-name">Ajout photo</h2>
+
+					<!-- Formulaire pour ajouter une photo à la galerie -->
+					<div class="photo-addition">
+						<!-- Icône pour ajouter une photo -->
+						<i class="fa-solid fa-image photo-addition-icon"></i>
+
+						<!-- Bouton pour sélectionner une photo à ajouter à la galerie -->
+						<label for="photo-addition-button" class="custom-file-upload">
+							+ Ajouter photo
+						</label>
+						<input type="file" value="+ Ajouter photo" onchange="imagePreview(this)" name="avatar"
+							accept="image/png, image/jpeg" id="photo-addition-button">
+
+						<!-- Aperçu de l'image sélectionnée -->
+						<img id="avatar" src="" alt="" />
+
+						<!-- Informations sur les formats d'image acceptés et la taille maximale des fichiers -->
+						<p class="photo-addition-stats">jpg, png : 4mo max</p>
+
+						<!-- Image téléchargée (cachée par défaut) -->
+						<img id="uploaded-image" class="hidden" src="#" alt="">
+					</div>
+
+					<!-- Champ d'entrée pour le titre de l'image -->
+					<div class="form-group-addition">
+						<label class="form-label" for="title">Titre</label>
+						<input id="title-input" class="form-input" type="text" name="title" required>
+					</div>
+
+					<!-- Champ de sélection pour la catégorie de l'image -->
+					<div class="form-group-addition">
+						<label class="form-label" for="category">Catégorie</label>
+						<select id="category-input" class="form-input" name="category" required>
+						</select>
+					</div>
+
+					<!-- Bouton pour valider l'ajout de l'image à la galerie -->
+					<div class="validate">
+						<button id="send-validation">Valider</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<!-- Script JavaScript pour gérer la fenêtre modale -->
 	<script src="modal.js"></script>
 </body>
-
-</html>
