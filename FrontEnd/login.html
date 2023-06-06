@@ -30,7 +30,7 @@
 
 	<main>
 		<!-- Ajout de l'attribut action et method -->
-		<form class="login-form" id="login-form" action="http://localhost:5678/api/users/login" method="POST">
+		<form class="login-form" id="login-form" method="POST">
 			<h2 class="form-title">Log In</h2>
 			<div class="form-group">
 				<label class="form-label" for="email-input">E-mail</label>
@@ -41,7 +41,7 @@
 				<input id="password-input" class="form-input" type="password" name="password" required>
 			</div>
 			<!-- Changement du type du bouton en button -->
-			<button type="button" class="form-button">Se connecter</button>
+			<button type="submit" class="form-button">Se connecter</button>
 			<a href="#" class="form-link">Mot de passe oublié</a>
 			<p id="error-message" class="form-error">Erreur dans l’identifiant ou le mot de passe</p>
 		</form>

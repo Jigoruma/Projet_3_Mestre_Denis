@@ -31,27 +31,28 @@ window.addEventListener("DOMContentLoaded", function (event) {
         },
         body: JSON.stringify(data)
       })
-        .then((response) => response.json()) // Extraire le JSON de la réponse
-        .then((data) => {
-          // Récupérer le token d'authentification renvoyé par le serveur
-          const token = data.token;
+        .then(response => {
+          if (response.ok) {
+            // Extraire le JSON de la réponse
+            response.json().then(data => {
+              // Récupérer le token d'authentification renvoyé par le serveur
+              const token = data.token;
+              // Stocker le token dans le stockage local du navigateur
+              localStorage.setItem("token", token);
 
-          // Vérifier que le token correspond à celui attendu
-          if (token === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4NDc3MTkzOSwiZXhwIjoxNjg0ODU4MzM5fQ.ouPpp_dzpH02FG_Mq01YhXJ4hIbuzSIPWm0wkEbrJfU") {
-            // Stocker le token dans le stockage local du navigateur
-            localStorage.setItem("token", token);
-
-            // Rediriger vers la page d'accueil
-            window.location.href = "index.html"; // Correction de l'URL de la page d'accueil
+              // Rediriger vers la page d'accueil
+              window.location.href = "index.html"; // Correction de l'URL de la page d'accueil
+            })
           } else {
-            // Afficher un message d'erreur si le token est invalide
-            errorMessage.textContent = "Token invalide";
+            console.log(response);
+            errorMessage.textContent = "Erreur dans l’identifiant ou le mot de passe";
           }
         })
         .catch((error) => {
+          console.log(error);
           // Afficher un message d'erreur si la requête a échoué
-          errorMessage.textContent = "Erreur dans l’identifiant ou le mot de passe";
+          errorMessage.textContent = "Echec de l'authentification";
         });
-    });
+    }); 
   }
 });
