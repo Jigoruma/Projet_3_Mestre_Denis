@@ -198,6 +198,7 @@ document.querySelectorAll('.modal-close').forEach(a => {
   });
 });
 
+
 // Étape 3.2 : Suppression de travaux existants
 
 // Fonction pour lister les travaux
@@ -349,9 +350,17 @@ document.getElementById("send-validation").addEventListener("click", function (e
     .then(response => response.json())
     .then(data => {
       listWorks()
+      closeModal(document.getElementById('modal1'));
+      document.getElementById("title-input").value = "";
+      document.getElementById("category-input").value = "";
+      document.getElementById("photo-addition-button").value = "";
+      document.getElementById("avatar").style.display = "none";
+      firstElements.style.display = 'flex';
+      newElements.style.display = 'none';
     })
     .catch(error => console.error(error));
 });
+
 
 // Remplir la sélection de catégorie avec les données de l'API
 fillCategorySelect()
@@ -369,4 +378,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Rafraîchir la page en cours
     location.reload();
   });
+});
+
+// Ajouter un écouteur d'événements pour le bouton "Supprimer la galerie"
+document.getElementById("delete-gallery").addEventListener("click", function () {
+  // Demander confirmation à l'utilisateur
+  if (confirm("Êtes-vous sûr de vouloir supprimer la galerie de photos ?")) {
+    // Supprimer tous les travaux en utilisant l'API
+    fetch(worksUrl, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then(() => {
+        listWorks()
+      })
+  }
 });
