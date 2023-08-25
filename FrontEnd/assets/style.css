@@ -671,9 +671,7 @@ i.fa-solid.fa-pen-to-square {
 	color: #ff0000;
 	display: flex;
 	justify-content: center;
-	font-family: 'Syne';
-	font-size: 14px;
-	font-weight: 400;
+	font: normal 12px 'Syne';
 	cursor: pointer;
 }
 
@@ -755,8 +753,6 @@ i.fa-solid.fa-pen-to-square {
 
 #photo-addition-button {
 	display: none;
-
-
 }
 
 .photo-addition-icon {
