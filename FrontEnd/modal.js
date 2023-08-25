@@ -297,7 +297,7 @@ document.querySelector("#portfolio").insertBefore(categorySelect, gallery);
 
 // Fonction pour remplir la sélection de catégorie avec les données de l'API
 const fillCategorySelect = () => {
-  fetch("http://localhost:5678/api/categories")
+  fetch(categoriesUrl)
     .then(response => response.json())
     .then(data => {
       const categoryInput = document.getElementById("category-input");
@@ -340,7 +340,7 @@ document.getElementById("send-validation").addEventListener("click", function (e
   }
 
   // Envoyer les données à l'API avec un fetch
-  fetch("http://localhost:5678/api/works", {
+  fetch(worksUrl, {
     method: "POST",
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
